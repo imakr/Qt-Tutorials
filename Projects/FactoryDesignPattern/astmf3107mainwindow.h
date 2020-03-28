@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <astmfactorywindow.h>
+#include <astmtestprofile.h>
 
 class ASTMF3107MainWindow : public ASTMProduct
 {
@@ -21,6 +22,7 @@ public:
     };
 private:
     Ui::ASTMF3107MainWindow *ui;
+    std::vector<ASTMTestProfile*> m_astmf3107Profiles;
 };
 
 #endif // ASTMF3107MAINWINDOW_H

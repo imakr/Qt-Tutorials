@@ -27,10 +27,15 @@ public:
     virtual void loadTestProfileView();
     virtual void buildTestProfileLogFile();
     virtual void loadTestProfile();*/
-private:
-    uint16_t	 m_currentAcquiredPoint;
+private:   
     //!< The current test profile index
     uint16_t	m_currentTestProfileIndex;
+
+    bool  m_bTestInProgress;
+
+    bool m_bSkipTestStep;
+
+    bool m_PointAcquired;
 private slots:
 
 };

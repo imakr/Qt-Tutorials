@@ -7,13 +7,14 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     w = nullptr;
+    astmproduct = nullptr;
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete w;
-    delete astmproduct;
+    if(nullptr != w)delete w;
+    if(nullptr != astmproduct)delete astmproduct;
 }
 
 void MainWindow::on_f2554button_clicked()

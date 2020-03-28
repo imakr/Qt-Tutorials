@@ -29,13 +29,15 @@ SOURCES += \
         mainwindow.cpp \
     astmfactorywindow.cpp \
     astmf2554mainwindow.cpp \
-    astmf3107mainwindow.cpp
+    astmf3107mainwindow.cpp \
+    astmtestprofile.cpp
 
 HEADERS += \
         mainwindow.h \
     astmfactorywindow.h \
     astmf2554mainwindow.h \
-    astmf3107mainwindow.h
+    astmf3107mainwindow.h \
+    astmtestprofile.h
 
 FORMS += \
         mainwindow.ui \

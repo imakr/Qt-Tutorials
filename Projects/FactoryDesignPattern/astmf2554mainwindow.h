@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <astmfactorywindow.h>
+#include <astmtestprofile.h>
+#include <system_error>
 
 class ASTMF2554MainWindow :public ASTMProduct
 {
@@ -20,8 +22,13 @@ public:
         ArrayAngledPerpendicularProfile = 4,	//!< 4.Navigation Array angled perpendicular
         DigitalizeAllPointsProfile = 5			//!< 5.Digitalization of all individual points
     };
+private slots:
+    void on_loadTPButton_clicked();
+
 private:
     Ui::ASTMF2554MainWindow *ui;
+    std::vector<ASTMTestProfile*> m_astmf2554Profiles;
+    std::error_code loadTestProfile();
 };
 
 #endif // ASTMF2554MAINWINDOW_H
