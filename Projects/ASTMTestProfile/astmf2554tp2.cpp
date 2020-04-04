@@ -8,14 +8,14 @@ ASTMF2554TP2::ASTMF2554TP2()
     m_currentTestMeasurecount = 0;
     m_totalTestMeasureSize = 0;
     m_currentAcquiredPoint = 0;
+    qDebug()<<"=== New ASTM Test Profile Contructed===";
+    qDebug()<<"ASTM Product = "<<m_astmProduct;
+    qDebug()<<"ASTM Profile Name = "<<m_profileName;
+    qDebug()<<"ASTM Prodile ID = "<<m_profileId;
+    qDebug()<<"=======================================";
 }
 
 ASTMF2554TP2::~ASTMF2554TP2()
-{
-
-}
-
-void ASTMF2554TP2::onUndoLastAcquisitionData()
 {
 
 }
@@ -29,6 +29,15 @@ void ASTMF2554TP2::initializeTestProfileView()
     m_instructionString += QString::number(m_currentTestMeasurecount * 15) + " degrees and Click on <b>Acquire Point</b> button";
     m_statusString = "Measures Acquired - ";
     m_sample = "<b>" + QString::number(m_currentTestMeasurecount) + "/" + QString::number(m_totalTestMeasureSize) + "</b>";
+}
+
+void ASTMF2554TP2::setTestProfileParams()
+{
+
+}
+void ASTMF2554TP2::onUndoLastAcquisitionData()
+{
+
 }
 void ASTMF2554TP2::updateTestProfileView()
 {
@@ -52,8 +61,4 @@ void ASTMF2554TP2::updateTestProfileView()
         m_sample = "<b>" + QString::number(m_currentTestMeasurecount) + "/" + QString::number(m_totalTestMeasureSize) + "</b>";
         m_statusString.append(m_sample);
     }
-}
-void ASTMF2554TP2::setTestProfileParams()
-{
-
 }

@@ -25,8 +25,8 @@ void MainWindow::on_createtp2_clicked()
 {
     if(nullptr == astmprofile)
     {
-        astmprofile.reset(new ASTMF2554TP1());
-        connect(astmprofile.get(),&ASTMF2554TP1::sigTestCompletion,this,&MainWindow::processTestCompletion,Qt::QueuedConnection);
+        astmprofile.reset(new ASTMF2554TP2());
+        connect(astmprofile.get(),&ASTMF2554TP2::sigTestCompletion,this,&MainWindow::processTestCompletion,Qt::QueuedConnection);
     }
 }
 
@@ -65,5 +65,6 @@ void MainWindow::on_exittp_clicked()
 
 void MainWindow::processTestCompletion(uint16_t p_value, QString p_text)
 {
-
+    QString p_message("All " + QString::number(p_value) + p_text + " acquisition completed!");
+    QMessageBox::information(this, "Robony ASTM Application", p_message);
 }

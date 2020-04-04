@@ -79,7 +79,7 @@
      <string>Undo</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="exittp">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -89,7 +89,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Exit TP</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">

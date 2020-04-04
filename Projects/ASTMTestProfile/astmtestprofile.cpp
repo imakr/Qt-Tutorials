@@ -1,12 +1,7 @@
 #include "astmtestprofile.h"
 
 ASTMTestProfile::ASTMTestProfile()
-{
-    qDebug()<<"=== New ASTM Test Profile Contructed===";
-    qDebug()<<"ASTM Product = "<<m_astmProduct;
-    qDebug()<<"ASTM Profile Name = "<<m_profileName;
-    qDebug()<<"ASTM Prodile ID = "<<m_profileId;
-    qDebug()<<"=======================================";
+{  
 }
 
 ASTMTestProfile::~ASTMTestProfile()

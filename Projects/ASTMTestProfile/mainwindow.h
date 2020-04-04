@@ -6,6 +6,7 @@
 #include "astmf2554tp2.h"
 #include "astmf2554tp1.h"
 #include <memory>
+#include <QMessageBox>
 namespace Ui {
 class MainWindow;
 }

@@ -9,11 +9,11 @@ class ASTMF2554TP2 : public ASTMTestProfile
     Q_OBJECT
 public:
     explicit ASTMF2554TP2();
+    virtual ~ASTMF2554TP2();
     virtual void onUndoLastAcquisitionData() override;
     virtual void updateTestProfileView() override;
     virtual void initializeTestProfileView() override;
     virtual void setTestProfileParams()override;
-    ~ASTMF2554TP2();
 signals:
 
 public slots:

@@ -8,6 +8,11 @@ ASTMF2554TP1::ASTMF2554TP1()
     m_currentTestMeasurecount = 0;
     m_totalTestMeasureSize = 0;
     m_currentAcquiredPoint = 0;
+    qDebug()<<"=== New ASTM Test Profile Contructed===";
+    qDebug()<<"ASTM Product = "<<m_astmProduct;
+    qDebug()<<"ASTM Profile Name = "<<m_profileName;
+    qDebug()<<"ASTM Prodile ID = "<<m_profileId;
+    qDebug()<<"=======================================";
 }
 
 ASTMF2554TP1::~ASTMF2554TP1()
