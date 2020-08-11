@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1107</width>
-    <height>632</height>
+    <height>870</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>510</y>
+      <y>700</y>
       <width>461</width>
       <height>61</height>
      </rect>
@@ -257,19 +257,6 @@
       <string>RZ (rad)</string>
      </property>
     </widget>
-    <widget class="QGroupBox" name="groupBox_4">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>461</width>
-       <height>151</height>
-      </rect>
-     </property>
-     <property name="title">
-      <string>Current TCP</string>
-     </property>
-    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_3">
     <property name="geometry">
@@ -277,7 +264,7 @@
       <x>10</x>
       <y>220</y>
       <width>461</width>
-      <height>281</height>
+      <height>481</height>
      </rect>
     </property>
     <property name="title">
@@ -412,6 +399,108 @@
          <string>600</string>
         </property>
        </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>271</y>
+       <width>421</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="QPushButton" name="createShortDeltaTransform">
+        <property name="text">
+         <string>5.Create Short Delta Transformation Matrix</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_8">
+        <item>
+         <widget class="QLabel" name="label_15">
+          <property name="text">
+           <string>Filter Threshold (Minimum displacement required in mm) :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="filterThreshold">
+          <property name="text">
+           <string>1</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="QLabel" name="label_14">
+          <property name="text">
+           <string>Expected Transformation Output File : </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="shortDeltaTranform"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>370</y>
+       <width>421</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_6">
+      <item>
+       <widget class="QPushButton" name="createStripDeltaTransform">
+        <property name="text">
+         <string>6.Strip computed Delta Transformation Matrix</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_11">
+        <item>
+         <widget class="QLabel" name="label_24">
+          <property name="text">
+           <string>Filter Threshold (Minimum displacement required in mm) :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="linearThreshold_mm">
+          <property name="text">
+           <string>1</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_12">
+        <item>
+         <widget class="QLabel" name="label_25">
+          <property name="text">
+           <string>Expected Transformation Output File : </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="stripDeltaOutput"/>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
@@ -662,7 +751,7 @@
       <string>Input Matrix :</string>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -842,7 +931,7 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -862,7 +951,7 @@
       <item row="0" column="1">
        <widget class="QLineEdit" name="in_r1c1">
         <property name="text">
-         <string>0</string>
+         <string>-0.0212837793</string>
         </property>
        </widget>
       </item>
@@ -876,7 +965,7 @@
       <item row="0" column="3">
        <widget class="QLineEdit" name="in_r1c2">
         <property name="text">
-         <string>0</string>
+         <string>-0.9385462999</string>
         </property>
        </widget>
       </item>
@@ -890,7 +979,7 @@
       <item row="0" column="5">
        <widget class="QLineEdit" name="in_r1c3">
         <property name="text">
-         <string>0</string>
+         <string>0.3444964886</string>
         </property>
        </widget>
       </item>
@@ -904,7 +993,7 @@
       <item row="0" column="7">
        <widget class="QLineEdit" name="in_r1c4">
         <property name="text">
-         <string>0</string>
+         <string>61.8014183044</string>
         </property>
        </widget>
       </item>
@@ -918,7 +1007,7 @@
       <item row="1" column="1">
        <widget class="QLineEdit" name="in_r2c1">
         <property name="text">
-         <string>0</string>
+         <string>0.0278564636</string>
         </property>
        </widget>
       </item>
@@ -932,7 +1021,7 @@
       <item row="1" column="3">
        <widget class="QLineEdit" name="in_r2c2">
         <property name="text">
-         <string>0</string>
+         <string>0.3438840508</string>
         </property>
        </widget>
       </item>
@@ -946,7 +1035,7 @@
       <item row="1" column="5">
        <widget class="QLineEdit" name="in_r2c3">
         <property name="text">
-         <string>0</string>
+         <string>0.9385988116</string>
         </property>
        </widget>
       </item>
@@ -960,7 +1049,7 @@
       <item row="1" column="7">
        <widget class="QLineEdit" name="in_r2c4">
         <property name="text">
-         <string>0</string>
+         <string>88.7882232666</string>
         </property>
        </widget>
       </item>
@@ -974,7 +1063,7 @@
       <item row="2" column="1">
        <widget class="QLineEdit" name="in_r3c1">
         <property name="text">
-         <string>0</string>
+         <string>-0.9993852973</string>
         </property>
        </widget>
       </item>
@@ -988,7 +1077,7 @@
       <item row="2" column="3">
        <widget class="QLineEdit" name="in_r3c2">
         <property name="text">
-         <string>0</string>
+         <string>0.0295733847</string>
         </property>
        </widget>
       </item>
@@ -1002,7 +1091,7 @@
       <item row="2" column="5">
        <widget class="QLineEdit" name="in_r3c3">
         <property name="text">
-         <string>0</string>
+         <string>0.0188254286</string>
         </property>
        </widget>
       </item>
@@ -1016,13 +1105,13 @@
       <item row="2" column="7">
        <widget class="QLineEdit" name="in_r3c4">
         <property name="text">
-         <string>0</string>
+         <string>1797.9094238281</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>

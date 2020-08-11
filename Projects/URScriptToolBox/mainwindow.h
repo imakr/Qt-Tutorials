@@ -73,7 +73,9 @@ public:
     };
     const QString URScriptFileName = "/UR_CAM2DBSCRIPT_OUTPUT.txt";
     const QString ExpectedTFFileName = "/EXPECTED_TF_MATRIX_OUTPUT.txt";
-    const QString DeltaMatrixFileName = "/CAM_DELTA_MATRIX_OUTPUT.csv";
+    const QString DeltaMatrixFileName = "/DELTA_MATRIX_OUTPUT.csv";
+    const QString ShortDeltaMatrixFileName = "/CAM_SHORT_DELTA_MATRIX_OUTPUT.csv";
+    const QString StrippedDeltaMatrixFileName = "/STRIPPED_DELTA_MATRIX_OUTPUT.csv";
     const QString TransformedMatrixFileName = "/TRANSFORMED_MATRIX_OUTPUT.txt";
 private slots:
     void on_selectButton_clicked();
@@ -98,6 +100,10 @@ private slots:
 
     void on_applyMatrixTransform_clicked();
 
+    void on_createShortDeltaTransform_clicked();
+
+    void on_createStripDeltaTransform_clicked();
+
 private:
     Ui::MainWindow *ui;
     QMatrix4x4   m_CurrentTransform;
@@ -112,6 +118,7 @@ private:
     int16_t dataSeparation(QString& p_data,CameraData& p_camData);
     uint16_t getURDataAfterTransformation(UR3eData &p_ur3Data);
     void updateURTCP();
+    int16_t createShortDeltaTransform(QString p_fileNameWithPath);
 };
 
 #endif // MAINWINDOW_H
