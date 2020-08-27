@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QGroupBox" name="groupBox_UR3eInfo">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>271</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="title">
+     <string>UR3e Network Parameters</string>
+    </property>
+    <widget class="QPushButton" name="Button_ConnectToUR">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>150</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string> Connect </string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../../../../RobonyTestSW/3.CTB/Test_Bench/Source_Code/V1.6/RDTB_TestApp/rdtbres.qrc">
+       <normaloff>:/res/icons/resources/connect.png</normaloff>:/res/icons/resources/connect.png</iconset>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_UR3eip">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>42</y>
+       <width>51</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>URe3 IP</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_URIP">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>40</y>
+       <width>133</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="inputMask">
+      <string/>
+     </property>
+     <property name="text">
+      <string>192.168.1.100</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_UR3ePort">
+     <property name="geometry">
+      <rect>
+       <x>33</x>
+       <y>90</y>
+       <width>51</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Port No     </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Button_DisconnectUR">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>150</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Disconnect</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../../../../RobonyTestSW/3.CTB/Test_Bench/Source_Code/V1.6/RDTB_TestApp/rdtbres.qrc">
+       <normaloff>:/res/icons/resources/disconnect.png</normaloff>:/res/icons/resources/disconnect.png</iconset>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>90</y>
+       <width>163</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_17">
+      <item>
+       <widget class="QRadioButton" name="urport1_radioButton">
+        <property name="text">
+         <string> 30002</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="urport2_radioButton">
+        <property name="text">
+         <string> 30003</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>400</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
