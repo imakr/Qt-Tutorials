@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/res/icon">
+        <file>resources/ur3e-image.png</file>
+    </qresource>
+</RCC>
