@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <URLowSpeedport.hpp>
 #include <URHighSpeedport.hpp>
+#include <URDashboardServer.hpp>
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +19,7 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 public slots:
     void setTCP(URLowSpeedport::UR3eTCP newTCP);
 private slots:
@@ -26,11 +29,15 @@ private slots:
 
     void on_sendNewTCP_clicked();
 
+    void on_URDashboardPort_clicked();
+
+    void handleDashboardCommand(QString p_command);
+
 private:
     Ui::MainWindow *ui;
-     URLowSpeedport *s1;
-     URHighSpeedport *s2;
-
+    URLowSpeedport *m_lowSpeedServer;
+    URHighSpeedport *m_highSpeedServer;
+    URDashboardServer *m_dashboardServer;
 };
 
 #endif // MAINWINDOW_H

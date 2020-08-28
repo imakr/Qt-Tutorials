@@ -28,12 +28,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     URHighSpeedport.cpp \
-    URLowSpeedport.cpp
+    URLowSpeedport.cpp \
+    URDashboardServer.cpp
 
 HEADERS += \
         mainwindow.h \
     URHighSpeedport.hpp \
-    URLowSpeedport.hpp
+    URLowSpeedport.hpp \
+    URDashboardServer.hpp
 
 FORMS += \
         mainwindow.ui

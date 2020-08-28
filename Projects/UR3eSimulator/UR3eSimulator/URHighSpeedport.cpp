@@ -10,8 +10,9 @@ URHighSpeedport::URHighSpeedport(QWidget *parent)
     : QDialog(parent)
     , statusLabel(new QLabel)
     , tcpServer(Q_NULLPTR)
-    , networkSession(0)
+    , networkSession(nullptr)
     , clientConnection (nullptr)
+    , mIsUR3eProgramExecutionInProgress(false)
 {
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     statusLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);
@@ -90,25 +91,22 @@ void URHighSpeedport::sessionOpened()
         settings.endGroup();
     }
 
-    //! [0] //! [1]
     tcpServer = new QTcpServer(this);
     QHostAddress address("127.0.0.1");
     if (!tcpServer->listen(address,30003)) {
-        QMessageBox::critical(this, tr("Fortune Server"),
+        QMessageBox::critical(this, tr("UR3e high speed Server"),
                               tr("Unable to start the server: %1.")
                               .arg(tcpServer->errorString()));
         close();
         return;
     }
-    statusLabel->setText(tr("The server is running on\n\nIP: %1\nport: %2\n\n")
+    statusLabel->setText(tr("The UR3e high speed is running on\n\nIP: %1\nport: %2\n\n")
                          .arg("127.0.0.1").arg(tcpServer->serverPort()));
 }
 
-//! [4]
 void URHighSpeedport::handleNewConnection()
 {
     qDebug() << "URHighSpeedport - handleNewConnection Detected.. ";
-    //timer->start(100);
     if(clientConnection == nullptr)
     {
         clientConnection = tcpServer->nextPendingConnection();
@@ -124,9 +122,8 @@ void URHighSpeedport::disconnectFromServer()
 {
     clientConnection->disconnectFromHost();
     clientConnection = nullptr;
-    //clientConnection->deleteLater();
 }
-//! [8]
+
 void URHighSpeedport::sendRealTimeData()
 {
     qDebug() << "URHighSpeedport - sendRealTimeData = ";
@@ -137,9 +134,7 @@ void URHighSpeedport::sendRealTimeData()
         qint64 bytesRead = mClientFile.readLine(m_urCmd,1024);
         qDebug() << "URHighSpeedport - m_urCmd = " << m_urCmd;
         qDebug() << "URHighSpeedport - readline size = " << bytesRead;
-        qDebug() << "URHighSpeedport - pos = " << mClientFile.pos();
-        //const char *data = reinterpret_cast<char*>(DummyData);
-        //clientConnection->write(data,1115);
+        qDebug() << "URHighSpeedport - current file ptr pos = " << mClientFile.pos();
         QString readline(m_urCmd);
         if(readline.contains("move"))
         {
@@ -163,7 +158,8 @@ void URHighSpeedport::sendRealTimeData()
         mClientFile.close();
         qDebug() << "URHighSpeedport - readline = EOF Reached";
         emit sigProgramRunningStatusChanged(false);
-       timer->stop();
+        timer->stop();
+        mIsUR3eProgramExecutionInProgress = false;
     }
 }
 void URHighSpeedport::readClientData()
@@ -171,8 +167,8 @@ void URHighSpeedport::readClientData()
     QByteArray clientdata = clientConnection->readAll();
     qDebug()<<"URHighSpeedport -  readClientData " << clientdata.toStdString().c_str();
     QString rcvdData(clientdata.toStdString().c_str());
-     qDebug()<<"URHighSpeedport -  readClientData - Script start compare :" <<rcvdData.compare("def RCTB_Test_UR_Script():");
-     qDebug()<<"URHighSpeedport -  readClientData - Script end compare :" <<rcvdData.compare("end");
+    qDebug()<<"URHighSpeedport -  readClientData - Script start compare :" <<rcvdData.compare("def RCTB_Test_UR_Script():");
+    qDebug()<<"URHighSpeedport -  readClientData - Script end compare :" <<rcvdData.compare("end");
     if(rcvdData.contains("def RCTB_Test_UR_Script():"))
     {
         qDebug()<<"URHighSpeedport -  readClientData - Script start detected :" ;
@@ -193,6 +189,7 @@ void URHighSpeedport::readClientData()
         {
             qDebug()<<"URHighSpeedport -  readClientData - Script end detected :" ;
             emit sigProgramRunningStatusChanged(true);
+            mIsUR3eProgramExecutionInProgress = true;
             timer->start(100);
             mClientFile.setFileName("clientdata.txt");
             mClientFile.open(QIODevice::ReadOnly | QFile::Text);
@@ -202,6 +199,40 @@ void URHighSpeedport::readClientData()
     }
 }
 
+void URHighSpeedport::setURMovementState(int p_value)
+{
+    if(mIsUR3eProgramExecutionInProgress == true)
+    {
+        switch(p_value)
+        {
+        case 0:
+        {
+            qDebug() << "URHighSpeedport - setURMovementState = PLAY command received";
+            timer->start(100);
+            break;
+        }
+        case 1:
+        {
+            qDebug() << "URHighSpeedport - setURMovementState = PAUSE command received";
+            timer->stop();
+            break;
+        }
+        case 2:
+        {
+            mClientFile.close();
+            qDebug() << "URHighSpeedport - setURMovementState = STOP command received";
+            emit sigProgramRunningStatusChanged(false);
+            timer->stop();
+            mIsUR3eProgramExecutionInProgress = false;
+            break;
+        }
+        default:
+        {
+            break;
+        }
+        }
+    }
+}
 void URHighSpeedport::initDummyData()
 {
     DummyData[0]=0;
