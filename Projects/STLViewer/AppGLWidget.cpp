@@ -10,6 +10,14 @@ AppGLWidget::AppGLWidget(QWidget *parent)
     scale = 1.0f;
     s0 = 1.001f;
     xTranslate =  0.0f;
+    yTranslate =  0.0f;
+    zTranslate =  0.0f;
+    QShortcut* upKeyShortcut    = new QShortcut(QKeySequence(Qt::Key_Up), this);
+    QShortcut* downKeyShortcut    = new QShortcut(QKeySequence(Qt::Key_Down), this);
+    QShortcut* leftKeyShortcut = new QShortcut(QKeySequence(Qt::Key_Left), this);
+    QObject::connect(upKeyShortcut, &QShortcut::activated, [this]() { xTranslate++; update(); });
+    QObject::connect(downKeyShortcut, &QShortcut::activated, [this]() { yTranslate++; update(); });
+    QObject::connect(leftKeyShortcut, &QShortcut::activated, [this]() { zTranslate++; update(); });
 }
 
 AppGLWidget::~AppGLWidget()
@@ -28,7 +36,8 @@ void AppGLWidget::initializeGL()
     // Set up the rendering context, define display lists etc.:
     initializeOpenGLFunctions();
     //Fix me - White background value for RGBA to be computed
-    glClearColor(184.0f, 213.0f, 238.0f, 1.0f);
+    //glClearColor(184.0f, 213.0f, 238.0f, 1.0f);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glEnable(GL_DEPTH_TEST);
 
     glEnable(GL_LIGHTING);
@@ -70,9 +79,9 @@ void AppGLWidget::paintGL()
     glScalef(scale, scale, scale);
     glRotatef(xRot / 2.0f, 1.0f, 0.0f, 0.0f);
     glRotatef(yRot / 2.0f, 0.0f, 1.0f, 0.0f);
-    glTranslatef(xTranslate,0,0);
+    glRotatef(yRot / 2.0f, 0.0f, 0.0f, 1.0f);
+    glTranslatef(xTranslate,yTranslate,zTranslate);
     Draw();
-    qDebug()<< "scale : " << scale << " | xRot = " << xRot << " | yRot = " <<yRot;
 }
 
 void AppGLWidget::Draw()
@@ -108,8 +117,6 @@ void AppGLWidget::DrawModel()
 void AppGLWidget::mousePressEvent(QMouseEvent *event)
 {
     mouseLastPos = event->pos();
-    xTranslate +=2;
-    qDebug()<< "mousePressEvent called : ";
     update();
 }
 

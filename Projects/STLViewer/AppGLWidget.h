@@ -37,6 +37,8 @@ private:
     int yRot;
     float scale, s0;
     float xTranslate;
+    float yTranslate;
+    float zTranslate;
   };
 
 #endif // AppGLWidget_H
